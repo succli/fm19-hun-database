@@ -1,0 +1,21 @@
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: url(../../../assets/liam-mckay-576710-unsplash.jpg) no-repeat center;
+  background-size: cover;
+  height: calc(100vh - 141px);
+
+  .layer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 0;
+    background: rgba(#000000, .75);
+    width: 100%;
+
+    .container {
+      width: 100%;
+    }
+  }
+}

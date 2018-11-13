@@ -1,0 +1,41 @@
+<section class="signup-form-section">
+  <div class="layer">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="contact-title">
+            <h3>Signup</h3>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="signupError" class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="alert alert-danger">
+            {{ signupError }}
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <form [formGroup]="signupForm" (ngSubmit)="signup()" class="row comment-reply contact-form">
+            <div class="col-12 form-group">
+              <input type="email" class="form-control" placeholder="Email*" formControlName="email">
+              <div *ngIf="email.invalid && email.dirty">
+                Your email doesn't look quite right...
+              </div>
+            </div>
+            <div class="col-12 form-group">
+              <input type="password" class="form-control" placeholder="Password*" formControlName="password">
+              <div *ngIf="password.invalid && password.touched" >
+                Password must be between 6 and 24 chars and have at least one number 
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="comment-submit" [disabled]="!signupForm.valid">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

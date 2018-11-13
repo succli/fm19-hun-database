@@ -1,0 +1,92 @@
+<div class="navbar-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="top-left-menu">
+          <ul>
+            <li>
+              <a [routerLink]="['contact']">Contact</a>
+            </li>
+            <li>
+              <a [routerLink]="['donation']">Donation</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="header-right-menu">
+          <div *ngIf="auth.user | async; then authenticated else guest"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #guest>
+  <ul>
+    <li><a [routerLink]="['login']"><fa-icon [icon]="faLock"></fa-icon> Login</a></li>
+    <li><a [routerLink]="['signup']"><fa-icon [icon]="faUserPlus"></fa-icon> Register</a></li>
+  </ul>
+</ng-template>
+<ng-template #authenticated>
+  <ul *ngIf="auth.user | async as user;">
+    <li class="user-data">
+      <span>{{ user.displayName }}</span>
+      <img [src]="user.photoURL">
+    </li>
+    <li>
+      <a [routerLink]="['admin']"><fa-icon [icon]="faCogs"></fa-icon> Admin</a>
+    </li>
+    <li>
+      <a (click)="auth.logout()"><fa-icon [icon]="faSignOut"></fa-icon> Logout</a>
+    </li>
+  </ul>
+</ng-template>
+
+<header class="header-section">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a [routerLink]="['/']" class="navbar-brand">
+          <img src="/assets/logo.png" alt="logo">
+        </a>
+      </div>
+      <div class="collapse navbar-collapse top-nav">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a [routerLink]="['download']" routerLinkActive="active">Download</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Database</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">OTP Bank Liga</a>
+              </li>
+              <li>
+                <a href="#">Merkantil Bank Liga</a>
+              </li>
+              <li>
+                <a href="#">Nemzeti Bajnokság III.</a>
+              </li>
+              <li>
+                <a href="#">Megyei Bajnokság I.</a>
+              </li>
+              <li>
+                <a href="#">Megyei Bajnokság II.</a>
+              </li>
+              <li>
+                <a href="#">Megyei Bajnokság III.</a>
+              </li>
+              <li>
+                <a href="#">Megyei Bajnokság IV.</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a [routerLink]="['about']" routerLinkActive="active">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
